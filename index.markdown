@@ -3,8 +3,7 @@ layout: default
 title: Home
 nolink: true 
 ---
-{% comment %} 
-{% assign bird = site.data.bird | sort:'name' %}
-{% include bird-item.html %}
-    
-{% endcomment %} 
+{% assign flora = site.posts | sort:'name' %}
+{% for flora in flora %} 
+{% include flora-item.html %}
+{% endfor %}  

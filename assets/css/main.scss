@@ -48,31 +48,25 @@ ul{
 @media (prefers-color-scheme: dark) {
     :root {
         //Base Colors
-        --c-darkest: rgba(61, 59, 57, 1);
+        --c-darkest: rgba(28, 27, 26, 1);
+        --c-darker: rgba(46, 44, 41,1);
         --c-lightest: rgba(181, 196, 202, 0.8);
-        --c-pale-green: #82997c;
-        --c-gray-blue: rgba(81, 99, 109,1);
-        --c-green: rgba(115, 131, 108,1);
+        --c-coral: #ff8370;
+        --c-blue-green: #00b1b0;
+        --c-freesia: #fec84d;
+        --c-fuchsia: #e42256;
         //Color Rules
-        --background: var(--c-darkest);
+        --background: var(--c-darker);
         --text-default: var(--c-lightest);
-        --blockquote: ;
-        --accent: ;
-        --shadow: ;
-        --color-splash: ;
-        --link: ;
+        --shadow: var(--c-darkest);
+        --color-splash: #e42256 ;
     }
-}
-@media (prefers-color-scheme: light) {
-    :root {
-        
-    }
-}
 :root {
     color-scheme: light dark;
     --base-font-size: 17px;
     --sans-serif: Helvetica, Arial, sans-serif;
-    --heading-primary: var(--sans-serif);
+    --Josefin: 'Josefin Sans';
+    --heading: var(--Josefin);
     --copy-body: var(--sans-serif);
     --monospace: Menlo,Roboto Mono, 'Andale Mono WT', "Andale Mono", Consolas, "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
     //Fonts & Spacing • Golden Section 1.618
@@ -102,11 +96,23 @@ ul{
     --d-radius-small: var(--ms-2);
     --d-radius-tiny: var(--ms-3);
 }   
+.coral{
+    color: #ff8370;
+}
+.blue-green{
+    color: #00b1b0;
+}
+.freesia{
+    color: #fec84d;
+}
+.fuchsia{
+    color: #e42256;
+}
 @media all and (min-width: 768px) {
     :root {
         --base-font-size: 19px;
     }
-}
+}}
 *,
 *::before,
 *::after {
@@ -162,11 +168,13 @@ a{
     vertical-align: baseline;
 }
 h1{
+    font-family: var(--heading);
     font-size: var(--ms2);
     letter-spacing: -0.14ch;
-    font-weight: var(--f-heavy);
+    font-weight: var(--f-bold);
     line-height: 0.9;
 }
+
 h2{
     font-size: var(--ms1);
     font-family: var(--heading-primary);
@@ -195,17 +203,28 @@ hr{
 header{
     padding: var(--ms1) var(--ms0) var(--ms2) var(--ms0);
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+
     h1.site-title{
         font-size: var(--ms4);
+        text-transform: uppercase;
+        text-align: left;
+        font-weight: var(--f-normal);
+        line-height: 0.8;
+        text-shadow: 6px 6px 0 var(--color-splash);
         @media all and (max-width: 500px){
             font-size: var(--ms2);
         }
         margin-left: -3px;
         color: var(--color-splash);
     }
-    a.site-header-link{
+    a.site-header-link {
         text-decoration: none;
-        color: var(--color-splash);
+        h1{
+            font-size: var(--ms3);
+            text-shadow: 3px 3px 0;
+        }
     }
     p.site-header-byline{
         font-size: var(--ms0);
@@ -218,6 +237,15 @@ header{
         @media all and (max-width: 740px){
             margin-top: var(--ms1);
             line-height: 1.5;
+        }
+    }
+    .header-icons{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        i{
+            font-size: var(--ms2);
+            margin-bottom: var(--ms-1);
         }
     }
 }
@@ -236,7 +264,7 @@ main{
         justify-content: space-around;
     }
 }
-.bird-item{
+.flora-item{
     width: 320px;
     padding: 5px;
     @media all and (max-width: 767px) {
@@ -250,11 +278,11 @@ main{
         max-width: 700px;
         @media all and (max-width: 767px){
             width: 100%;
-            .bird-item-wrapper{
+            .flora-item-wrapper{
                 padding: var(--ms0);
             }
         }
-        .bird-item-wrapper{
+        .flora-item-wrapper{
             padding: var(--ms-1) var(--ms1) var(--ms0) var(--ms1);
             h2.counter-title{
                 white-space: nowrap;
@@ -277,26 +305,26 @@ main{
             }
         }
     }
-    div.bird-item-wrapper{
+    div.flora-item-wrapper{
         border-radius: 200px 0 50px 0;
         padding: var(--ms-1);
         @media (prefers-color-scheme: light) {
             margin: var(--ms0) 0;
-            box-shadow: 15px 25px 30px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 15px 25px 30px 2px var(--shadow);
             background-color: rgba(255, 255, 255, 0.1);
         }
         @media (prefers-color-scheme: dark) {
             border: solid var(--d-border-thickness) rgba(255, 204, 51, 0.3);
             margin: var(--ms0) 0;
-            box-shadow: 15px 25px 30px 2px rgba(0, 0, 0, 1);
+            box-shadow: 15px 25px 30px 2px var(--shadow);
         }
     }
-    h1.bird-item-heading{
+    h1.flora-item-heading{
         margin-bottom: var(--ms1);
         font-size: var(--ms1);
         letter-spacing: -0.09ch;
     }
-    h1.bird-item-heading::first-line {
+    h1.flora-item-heading::first-line {
         font-size: var(--ms2);
     }
     li.stat{
@@ -309,7 +337,7 @@ main{
             }
         }
     }
-    figure.bird-image-container{
+    figure.flora-image-container{
         width: 100%;
         position: relative;
         margin-bottom: 13px;
@@ -369,7 +397,7 @@ main{
             padding: var(--ms-1);
         }
     }
-    img.bird-image{
+    img.flora-image{
         max-width: 100%;
         border-radius: 0 100px;
         @media (prefers-color-scheme: dark) {

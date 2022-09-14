@@ -1,12 +1,27 @@
-- common_name: [string]
-  alt_name: [array of strings] 
-  latin-name: [string]
-  planted-date: [numeric]
-  blooms: [date range]
-  flowers: [boolean]
-  first_growth: [when we first see signs of growth in the spring]
-  last_fertilized: [date fertilized/fed]
-  page_url: [string]
-  image_url: [string]
-  caption: [string]
-  comments: [strings]
+
+# - common_name: [string]
+#  alt_name: [array of strings] 
+# latin-name: [string]
+#  planted-date: [numeric]
+#  blooms: [date range]
+#  flowers: [boolean]
+#  first_growth: [when we first see signs of growth in the spring]
+#  last_fertilized: [date fertilized/fed]
+#  watering-schedule: 
+#  page_url: [string]
+#  image_url: [string]
+#  caption: [string]
+#  comments: [strings]
+- common_name: 'Lavender'
+  alt_name: Lavender
+  latin-name: Lavandula spica
+  planted-date: 2020
+  blooms: late spring - late summer
+  flowers: true
+  first-growth: early spring
+  last_fertilized: 05/2022
+  watering_schedule: Once a week
+  page_url: 
+  image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Single_lavender_flower02.jpg'
+  caption: 'A lavender plant'
+  comments: "MMMMmmmm smells good"

@@ -1,12 +1,12 @@
-title: Garden Observer
+title: Garden Flora Observer
 description: >- # this means to ignore newlines until "baseurl:"
-  A catalogue of plants in my garden.
+  A catalogue of all the flora in my garden.
 baseurl: "/" 
 css-dir: "assets/css/"
 js-dir: "assets/js/"
 linkedin: "https://www.linkedin.com/in/christanfergus/"
 personal-site: "https://christanfergus.com"
-url: "https://garden.observer" 
+url: "https://gardenflora.observer" 
 exclude:
   - .sass-cache/
   - .jekyll-cache/
