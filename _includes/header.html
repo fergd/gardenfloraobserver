@@ -1,25 +1,18 @@
-<header>
-    {%if page.nolink == true %}
-    <div>
-        <h1 class="site-title">Garden<br>Flora<br>Observer</h1>
+{%if page.nolink == true %}
+<header class="header-front-page">
+    <div class="garden-location">
+        <p><i class="fa-thin fa-map-marker-alt"></i>&nbsp;{{site.garden-location}}</p>
+        <a href=""><p><i class="fa-thin fa-earth-americas"></i>&nbsp;{{site.hardiness-zone}}</p></a>
     </div>
-    <div class="header-icons">
-        <i class="fa-thin fa-flower coral"></i>
-        <i class="fa-thin fa-flower-tulip fuchsia"></i>
-        <i class="fa-thin fa-trillium"></i>
-        <i class="fa-thin fa-flower-daffodil freesia"></i>
-        <i class="fa-thin fa-tree-deciduous blue-green"></i>
+    <div class="heading-wrapper">
+        <h1 class="site-title">Garden<span>Flora</span>Observer</h1>
     </div>
-    {%else%}
+</header>
+
+{%else%}
+<header class="no-link">
     <div>
         <a class="site-header-link" href="{{site.baseurl}}"><h1 class="site-title">{{site.title}}</h1></a>
     </div>
-    <div class="header-icons">
-        {% if page.tree %} 
-        <i class="fa-thin fa-tree-deciduous blue-green"></i>
-        {% else %} 
-        <i class="fa-thin fa-flower-daffodil freesia"></i>
-        {% endif %} 
-    </div>
-    {%endif%}
 </header>
+{%endif%}

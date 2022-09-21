@@ -1,0 +1,24 @@
+---
+layout: default
+title: Home
+nolink: true 
+---
+<section class="intro">
+    <hr class="stealth">
+    <blockquote>
+        <p>A catalogue of the trees, bushes, and perennials in my yard.</p>
+    </blockquote>
+    <hr class="stealth">
+</section>
+<section class="cards">
+{% assign post = site.posts | sort:"title" %} 
+{% for post in post %} 
+{% assign flora = post.flora %}
+{% include flora-item.html %}
+{% endfor %} 
+</section>
+<section class="hardiness-zone">
+    <!-- <a href="https://en.wikipedia.org/wiki/Hardiness_zone" target="_blank">Hardiness Zone Information</a> -->
+</section>
+
+

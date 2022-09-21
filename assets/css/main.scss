@@ -45,29 +45,26 @@ table {
 ul{
     list-style: none;
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        //Base Colors
-        --c-darkest: rgba(28, 27, 26, 1);
-        --c-darker: rgba(46, 44, 41,1);
-        --c-lightest: rgba(181, 196, 202, 0.8);
-        --c-coral: #ff8370;
-        --c-blue-green: #00b1b0;
-        --c-freesia: #fec84d;
-        --c-fuchsia: #e42256;
-        //Color Rules
-        --background: var(--c-darker);
-        --text-default: var(--c-lightest);
-        --shadow: var(--c-darkest);
-        --color-splash: #e42256 ;
-    }
 :root {
-    color-scheme: light dark;
-    --base-font-size: 17px;
-    --sans-serif: Helvetica, Arial, sans-serif;
-    --Josefin: 'Josefin Sans';
-    --heading: var(--Josefin);
-    --copy-body: var(--sans-serif);
+    //Base Colors
+    --c-darkest: rgba(28, 27, 26, 1);
+    --c-darker: rgba(46, 44, 41,1);
+    --c-lush-green: #00B280;
+    --c-coral: #FF8370;
+    --c-blue-green: #00b1b0;
+    --c-freesia: #fec84d;
+    --c-fuchsia: #e42256;
+    --c-caladon: #A9BCB0;
+    --c-navy: #232E3D;
+    //Color Rules
+    --c-lightest: var(--c-caladon);
+    --background: var(--c-navy);
+    --text-default: var(--c-lightest);
+    --shadow: rgba(21,29,38,1);
+    --color-splash: var(--c-lush-green);
+  
+    --base-font-size: 19px;
+    --sans-serif: 'Raleway', Helvetica, Arial, sans-serif;
     --monospace: Menlo,Roboto Mono, 'Andale Mono WT', "Andale Mono", Consolas, "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
     //Fonts & Spacing • Golden Section 1.618
     --ms-3: 0.236rem;
@@ -82,37 +79,27 @@ ul{
     //Typography
     --max-paragraph: 35rem;
     //Font Displays
-    --f-normal: 400;
+    --f-normal: 100;
     --f-medium: 400;
-    --f-heavy: 800;
+    --f-heavy: 900;
     --f-emphasis: italic;
-
+    //Images
     --image-opacity: brightness(.8) contrast(1.2);
-
     //Borders, Outlines, Radii
     --d-border-thickness: 1px;
     --d-border: var(--d-border-thickness) solid var(--color-splash);
     --d-radius: var(--ms-1);
     --d-radius-small: var(--ms-2);
     --d-radius-tiny: var(--ms-3);
+    --d-big-bottom-border: var(--ms-1) solid var(--c-lush-green);
+    --primary-space: 2rem;
+    --d-box-shadow: 15px 25px 30px 2px var(--shadow);
 }   
-.coral{
-    color: #ff8370;
-}
-.blue-green{
-    color: #00b1b0;
-}
-.freesia{
-    color: #fec84d;
-}
-.fuchsia{
-    color: #e42256;
-}
 @media all and (min-width: 768px) {
     :root {
         --base-font-size: 19px;
     }
-}}
+}
 *,
 *::before,
 *::after {
@@ -122,9 +109,6 @@ ul{
 *::-moz-selection {
     background-color: var(--color-splash);
 }
-:root {
-    --primary-space: 2rem;
-}
 html{
     font-size: var(--base-font-size);
 }
@@ -133,7 +117,6 @@ body{
     font-family: var(--sans-serif);
     font-size: 100%;
     margin: 0 auto;
-    // padding: var(--ms0);
     min-height: 100vh;
     max-width: 1800px;
     background: var(--background);
@@ -146,19 +129,16 @@ body{
     justify-content: center;
 }
 a{
-    color: var(--link);
-    @media (prefers-color-scheme: dark) {
-        &:hover {
-            color: var(--c-pale-green);
-        }
+    color: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    &:hover {
+        color: var(--c-lush-green);
     }
 }
 *[target="_blank"]::after {
     content: '';
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NyIgaGVpZ2h0PSI2NyI+PHBhdGggZmlsbD0iIzJBMzIzRSIgZmlsbC1vcGFjaXR5PSIuOSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNTYuNTMxIDQxLjg3NWgtNC4xODdhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQgMi4wOTR2MTQuNjU2SDguMzc1VjE2Ljc1aDE4Ljg0NGEyLjA5NCAyLjA5NCAwIDAgMCAyLjA5My0yLjA5NFYxMC40N2EyLjA5NCAyLjA5NCAwIDAgMC0yLjA5My0yLjA5NEg2LjI4QTYuMjgxIDYuMjgxIDAgMCAwIDAgMTQuNjU2VjYwLjcyQTYuMjgxIDYuMjgxIDAgMCAwIDYuMjgxIDY3aDQ2LjA2M2E2LjI4MSA2LjI4MSAwIDAgMCA2LjI4MS02LjI4MXYtMTYuNzVhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQtMi4wOTRaTTYzLjg2IDBINDcuMTFjLTIuNzk2IDAtNC4xOTQgMy4zOS0yLjIyNCA1LjM2NWw0LjY3NSA0LjY3Ni0zMS44OTQgMzEuODgyYTMuMTQgMy4xNCAwIDAgMCAwIDQuNDVsMi45NjcgMi45NjFhMy4xNCAzLjE0IDAgMCAwIDQuNDQ5IDBMNTYuOTYgMTcuNDQ2bDQuNjc1IDQuNjdDNjMuNTk4IDI0LjA3NyA2NyAyMi43MDMgNjcgMTkuODlWMy4xNEEzLjE0IDMuMTQgMCAwIDAgNjMuODYgMFoiLz48L3N2Zz4=');
-    @media (prefers-color-scheme: dark) {
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NyIgaGVpZ2h0PSI2NyI+PHBhdGggZmlsbD0iI0I0NEU4MiIgZmlsbC1vcGFjaXR5PSIuOSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNTYuNTMxIDQxLjg3NWgtNC4xODdhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQgMi4wOTR2MTQuNjU2SDguMzc1VjE2Ljc1aDE4Ljg0NGEyLjA5NCAyLjA5NCAwIDAgMCAyLjA5My0yLjA5NFYxMC40N2EyLjA5NCAyLjA5NCAwIDAgMC0yLjA5My0yLjA5NEg2LjI4QTYuMjgxIDYuMjgxIDAgMCAwIDAgMTQuNjU2VjYwLjcyQTYuMjgxIDYuMjgxIDAgMCAwIDYuMjgxIDY3aDQ2LjA2M2E2LjI4MSA2LjI4MSAwIDAgMCA2LjI4MS02LjI4MXYtMTYuNzVhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQtMi4wOTRaTTYzLjg2IDBINDcuMTFjLTIuNzk2IDAtNC4xOTQgMy4zOS0yLjIyNCA1LjM2NWw0LjY3NSA0LjY3Ni0zMS44OTQgMzEuODgyYTMuMTQgMy4xNCAwIDAgMCAwIDQuNDVsMi45NjcgMi45NjFhMy4xNCAzLjE0IDAgMCAwIDQuNDQ5IDBMNTYuOTYgMTcuNDQ2bDQuNjc1IDQuNjdDNjMuNTk4IDI0LjA3NyA2NyAyMi43MDMgNjcgMTkuODlWMy4xNEEzLjE0IDMuMTQgMCAwIDAgNjMuODYgMFoiLz48L3N2Zz4=');
-    }
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NyIgaGVpZ2h0PSI2NyI+PHBhdGggZmlsbD0iI0I0NEU4MiIgZmlsbC1vcGFjaXR5PSIuOSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNTYuNTMxIDQxLjg3NWgtNC4xODdhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQgMi4wOTR2MTQuNjU2SDguMzc1VjE2Ljc1aDE4Ljg0NGEyLjA5NCAyLjA5NCAwIDAgMCAyLjA5My0yLjA5NFYxMC40N2EyLjA5NCAyLjA5NCAwIDAgMC0yLjA5My0yLjA5NEg2LjI4QTYuMjgxIDYuMjgxIDAgMCAwIDAgMTQuNjU2VjYwLjcyQTYuMjgxIDYuMjgxIDAgMCAwIDYuMjgxIDY3aDQ2LjA2M2E2LjI4MSA2LjI4MSAwIDAgMCA2LjI4MS02LjI4MXYtMTYuNzVhMi4wOTQgMi4wOTQgMCAwIDAtMi4wOTQtMi4wOTRaTTYzLjg2IDBINDcuMTFjLTIuNzk2IDAtNC4xOTQgMy4zOS0yLjIyNCA1LjM2NWw0LjY3NSA0LjY3Ni0zMS44OTQgMzEuODgyYTMuMTQgMy4xNCAwIDAgMCAwIDQuNDVsMi45NjcgMi45NjFhMy4xNCAzLjE0IDAgMCAwIDQuNDQ5IDBMNTYuOTYgMTcuNDQ2bDQuNjc1IDQuNjdDNjMuNTk4IDI0LjA3NyA2NyAyMi43MDMgNjcgMTkuODlWMy4xNEEzLjE0IDMuMTQgMCAwIDAgNjMuODYgMFoiLz48L3N2Zz4=');
     background-repeat: no-repeat;
     background-size: contain;
     width: 0.8em;
@@ -167,25 +147,47 @@ a{
     margin-left: var(--ms-3);
     vertical-align: baseline;
 }
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    &:focus {
+        clip: auto;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: var(--space-default) 0;
+        text-align: center;
+        font-weight: 900;
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
 h1{
     font-family: var(--heading);
     font-size: var(--ms2);
     letter-spacing: -0.14ch;
-    font-weight: var(--f-bold);
+    font-weight: var(--f-medium);
     line-height: 0.9;
+    &.emphasis{
+        font-weight: var(--f-heavy);
+        letter-spacing: -0.04ch;
+    }
 }
-
 h2{
     font-size: var(--ms1);
     font-family: var(--heading-primary);
-    font-weight: var(--f-heavy);
+    font-weight: var(--f-medium);
     letter-spacing: -0.04ch;
     line-height: 1;
     color: var(--text-default);
 }
+
 p{
-    font-size: 13px;
-    font-weight: 400;
+    font-weight: var(--f-normal);
 }
 hr{
     height: var(--d-border-thickness);
@@ -200,110 +202,134 @@ hr{
         }
     }
 }
-header{
-    padding: var(--ms1) var(--ms0) var(--ms2) var(--ms0);
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-
-    h1.site-title{
-        font-size: var(--ms4);
-        text-transform: uppercase;
-        text-align: left;
-        font-weight: var(--f-normal);
-        line-height: 0.8;
-        text-shadow: 6px 6px 0 var(--color-splash);
-        @media all and (max-width: 500px){
-            font-size: var(--ms2);
-        }
-        margin-left: -3px;
-        color: var(--color-splash);
-    }
-    a.site-header-link {
-        text-decoration: none;
-        h1{
-            font-size: var(--ms3);
-            text-shadow: 3px 3px 0;
-        }
-    }
-    p.site-header-byline{
-        font-size: var(--ms0);
-        font-family: var(--monospace);
-        border: var(--c-pale-green) 1px dashed;
-        padding: var(--ms0);
-        @media (prefers-color-scheme: dark) {
-            color: rgb(172, 172, 222);
-        }
-        @media all and (max-width: 740px){
-            margin-top: var(--ms1);
-            line-height: 1.5;
-        }
-    }
-    .header-icons{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        i{
-            font-size: var(--ms2);
-            margin-bottom: var(--ms-1);
-        }
-    }
-}
 li{
     margin-bottom: var(--ms-1);
 }
+header.header-front-page{
+    padding: var(--ms-1) var(--ms0) var(--ms2) var(--ms0);
+    background: 
+        linear-gradient(
+            rgba(21,29,38,0.4),
+            rgba(21,29,38,0.4)
+        ), 
+        url(https://res.cloudinary.com/fergd/image/upload/v1663341132/Garden%20Flora%20Observer/martin-knize-JjT_7MwREm4-unsplash.jpg) no-repeat center;
+    background-size: cover;
+    box-shadow: 0px 0px 100px 50px var(--shadow);
+    border-bottom: var(--d-big-bottom-border);
+    div.garden-location{
+        width: 100%;
+        p{
+            width: 100%;
+            text-align: right;
+            font-weight: var(--f-medium);
+        }
+    }
+    h1.site-title{
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 20px var(--c-navy);
+        letter-spacing: 0;
+        span{
+            display: block;
+            font-size: var(--ms5);
+            color: var(--c-lush-green);
+            font-weight: var(--f-heavy);
+            opacity: 0.9;
+            // text-shadow: none;
+        }
+    }
+    @media all and (max-width: 767px) {
+        div.garden-location{
+            display: none;
+        }
+        h1.site-title{
+            font-size: var(--ms1);
+            span{
+                font-size: var(--ms3);
+            }
+        }
+    }
+}
+header.no-link{
+    padding: var(--ms1);
+    box-shadow: 0px 0px 100px 50px var(--shadow);
+    border-bottom: var(--d-big-bottom-border);
+
+    h1.site-title{
+        text-align: left;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 20px var(--c-navy);
+        letter-spacing: 0;
+        font-weight: var(--f-heavy);
+        color: var(--c-lush-green);
+        &:hover{
+            color: var(--c-coral);
+        }
+    }
+}
 main{
     max-width: 100%;
-    padding: var(--ms0);
     display: flex;
     flex-direction: column;
     @media all and (min-width: 768px) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-grow: 1;
-        justify-content: space-around;
+        section.cards{
+            display: flex;
+            max-width:100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            justify-content: space-around;
+        }
+    }
+}
+section.intro{
+    padding: var(--ms2);
+    text-align: center;
+    p{
+        font-size: var(--ms1);
+    }
+}
+section.hardiness-zone{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: 
+        linear-gradient(
+            rgba(21,29,38,0.6),
+            rgba(21,29,38,0.6)
+        ), 
+        url(https://upload.wikimedia.org/wikipedia/commons/5/58/2012_USDA_Plant_Hardiness_Zone_Map_%28USA%29.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    // height: 100vh;
+    width: 100%;
+    border-top: var(--d-big-bottom-border);
+    border-bottom: var(--d-big-bottom-border);
+    padding: var(--ms5);
+    a{
+        display: block;
+        padding: var(--ms0);
+        background: var(--c-fuchsia);
+        height: auto;
+        box-shadow: var(--d-box-shadow);
+        border-radius: 0 20px 20px 20px;
     }
 }
 .flora-item{
-    width: 320px;
+    width: 250px;
     padding: 5px;
+    &:hover{
+        a{
+            h1{
+                color: var(--c-coral);
+            }
+        }
+    }
     @media all and (max-width: 767px) {
         align-self: center;
     }
     @media all and (min-width: 768px) {
         align-self: top;
-    }
-    &.counter{
-        flex-grow: 2;
-        max-width: 700px;
-        @media all and (max-width: 767px){
-            width: 100%;
-            .flora-item-wrapper{
-                padding: var(--ms0);
-            }
-        }
-        .flora-item-wrapper{
-            padding: var(--ms-1) var(--ms1) var(--ms0) var(--ms1);
-            h2.counter-title{
-                white-space: nowrap;
-                color: var(--color-splash);
-                margin-bottom: var(--ms1);
-                margin-left: -35px;
-                span.counter-number{
-                    display: inline-block;
-                    padding: 30px;
-                    border: 1px solid var(--c-pale-green);
-                    border-radius: 0 100px 100px 100px;
-                    background: var(--background);
-                    opacity: 0.9;
-                }
-            }
-            p.about-text{
-                font-size: var(--ms0);
-                line-height: 1.4;
-                margin-bottom: var(--ms0);
-            }
-        }
     }
     div.flora-item-wrapper{
         border-radius: 200px 0 50px 0;
@@ -314,28 +340,18 @@ main{
             background-color: rgba(255, 255, 255, 0.1);
         }
         @media (prefers-color-scheme: dark) {
-            border: solid var(--d-border-thickness) rgba(255, 204, 51, 0.3);
             margin: var(--ms0) 0;
             box-shadow: 15px 25px 30px 2px var(--shadow);
         }
     }
     h1.flora-item-heading{
         margin-bottom: var(--ms1);
-        font-size: var(--ms1);
+        font-size: var(--ms0);
         letter-spacing: -0.09ch;
+        color: var(--c-blue-green);
     }
     h1.flora-item-heading::first-line {
-        font-size: var(--ms2);
-    }
-    li.stat{
-        font-family: monospace;
-        color: var(--text-default);
-        font-size: var(--ms-1);
-        span{
-            @media (prefers-color-scheme: dark) {
-                color: var(--color-splash);
-            }
-        }
+        font-size: var(--ms1);
     }
     figure.flora-image-container{
         width: 100%;
@@ -358,50 +374,12 @@ main{
                 color: var(--color-splash);                
             }
         }
-        &.uncertain::before{
-            content: "?";
-            transition: all;
-            font-family: var(--monospace); 
-            font-weight: 900;
-            font-size: var(--ms0);
-            position:absolute;
-            z-index: 1;
-            top: -0.9rem;
-            left: -0.9rem;
-            border-radius: 100%;
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 40px;
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            border: 1px dashed var(--c-pale-green);
-            background: var(--background);
-            @media (prefers-color-scheme: light) {
-                background: white ;
-                color: var(--text-default);
+        img.flora-image{
+            max-width: 100%;
+            border-radius: 0 60px;
+            @media (prefers-color-scheme: dark) {
+                filter: var(--image-opacity);
             }
-            opacity: 0.9;
-            color: rgb(172, 172, 222);
-            transition: width 0.5s, height 0.5s, transform 0.5s ease-out;
-        }
-        &.uncertain:hover::before{
-            content: "Certainty is low that this is the correct identification.";
-            font-size: var(--ms-1);
-            font-weight: 400;
-            line-height: 1.2;
-            width: 100%;
-            border-radius: 4px;
-            text-align: left;
-            height: auto;
-            padding: var(--ms-1);
-        }
-    }
-    img.flora-image{
-        max-width: 100%;
-        border-radius: 0 100px;
-        @media (prefers-color-scheme: dark) {
-            filter: var(--image-opacity);
         }
     }
 }
@@ -415,24 +393,95 @@ footer.site-footer{
     }
     p.boilerplate{
         font-family: var(--monospace);
+        font-size: var(--ms-1);
     }
 }
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    &:focus {
-        clip: auto;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding: var(--space-default) 0;
-        text-align: center;
-        font-weight: 900;
-        background: rgba(255, 255, 255, 0.5);
+
+article.flora-item-post{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    border-bottom: var(--d-big-bottom-border);
+
+    figure{
+        // min-height: 100vh;
+        max-width: 65%;
+        overflow: hidden;
+        flex-shrink: 3;
+        img{
+            max-width: 100%; 
+        } 
+    }
+   
+    div.content{
+        padding: var(--ms1) var(--ms1) var(--ms2) var(--ms1);
+        background: var(--shadow);
+        display: flex;
+        flex-grow: 1;
+        position: relative;
+        div.icon-wrapper{
+            i{
+                font-size: var(--ms2);
+                border-radius: 100px;
+                padding: var(--ms-1);
+                position: absolute;
+                right: -0.7em;
+                top: -0.5em;
+            }
+            i[class$="deciduous"]{
+                color: var(--c-lush-green);
+                background: var(--text-default);
+            }
+            i[class$="daffodil"]{
+                background: var(--c-coral);
+                color: var(--c-fuchsia);
+            }
+        }
+        h1{
+            margin-bottom: var(--ms0);
+            color: var(--c-fuchsia);
+            font-weight: var(--f-heavy);
+            letter-spacing: 0.01ch;
+        }
+        h2{
+            margin-bottom: var(--ms0);
+        }
+        ul{
+            margin-bottom: var(--ms2);
+            li span:first-of-type{
+                font-family: var(--monospace);
+                color: var(--c-freesia);
+            }
+            li ul{
+                margin-top: var(--ms-1);
+                margin-left: var(--ms-1);
+            }
+        }
+        div.flora-info{
+            flex-grow: 1;
+        }
+        div.comments{
+            
+            p{
+                padding: var(--ms0);
+                background: var(--c-blue-green);
+                border-radius: 0 var(--ms1);
+                color: var(--c-navy);
+                margin-bottom: var(--ms-1);
+                font-weight: var(--normal);
+            }
+        }
+    }   
+}
+div.pagination{
+    padding: var(--ms2);
+    border-bottom: var(--d-big-bottom-border);
+    display: flex;
+    justify-content: space-between;
+
+    a{
+        padding: var(--ms0);
+        color: var(--c-coral);
     }
 }

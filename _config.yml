@@ -29,3 +29,8 @@ assets:
   source_maps: true
   sources:
   - assets/stylesheets
+garden-location: Thornton, Colorado
+hardiness-zone: 5b
+plugins: 
+  - jekyll-paginate
+paginate: 5

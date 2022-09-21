@@ -1,4 +1,17 @@
 ---
 layout: default
 ---
-{{content}}
+{% assign flora = page.flora %}
+{% include flora-item.html %} 
+<div class="pagination">
+  <div>
+    {% if page.previous.url %}
+      <a href="{{page.previous.url}}" class="pagination-previous"><i class="fa-regular fa-arrow-left"></i>&nbsp;{{page.previous.title}}</a>
+    {% endif %}
+  </div>
+  <div>
+    {% if page.next.url %}
+    <a href="{{page.next.url}}" class="pagination-next">{{page.next.title}}&nbsp;<i class="fa-regular fa-arrow-right"></i></a>
+    {% endif %}
+  </div>
+</div>

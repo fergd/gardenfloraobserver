@@ -1,18 +1,87 @@
-<div class="flora-item">
-	<div class="flora-item-wrapper">
-		<h1 class="flora-item-heading"><a href="{{flora.url}}">{{flora.common_name}}</a></h1>
-		<figure class="flora-image-container">
-		<img class="flora-image" src="{{flora.image_url}}">
-		<figcaption> {{flora.caption}}</figcaption>
-	</figure>
-	<p>{{flora.alt_name}}</p>
-		<p>{{flora.latin-name}}</p>
-		<p>{{flora.planted-date}}</p>
-		<p> {{flora.blooms}}</p>
-		<p>{{flora.flowers}}</p>
-		<p>{{flora.first-growth}}</p>
-		<p> {{flora.last_fertilized}}</p>
-		<p> {{flora.watering_schedule}}</p>
-		<p> {{flora.comments}} </p>
-	</div>
-</div>
+{% if page.nolink %} 
+<article class="flora-item">
+    <a href="{{post.url}}">
+    <div class="flora-item-wrapper">
+        <figure class="flora-image-container">
+            <img class="flora-image" src="{{post.flora.image_url}}" alt="{{post.flora.caption}}" loading="lazy" />
+        </figure>
+        <h1 class="flora-item-heading">{{post.flora.common_name}}</h1>
+    </div>
+    </a>
+</article>
+{% else %} 
+{% assign flora = page.flora %} 
+<article class="flora-item-post">
+    <figure>
+        <img class="flora-image" src="{{flora.image_url}}" alt="{{flora.caption}}" loading="lazy" />
+    </figure>
+     <div class="content">
+        <div class="flora-info">
+            <div class="icon-wrapper">
+            {% if page.tree %} 
+            <i class="fa-light fa-tree-deciduous"></i>
+            {% else %} 
+            <i class="fa-light fa-flower-daffodil"></i>
+            {% endif %} 
+            </div>
+            <h1 class="flora-item-heading">{{flora.common_name}}</h1>
+            <ul>
+                {% if flora.binomial_name %} 
+            <li><span>Binomial name:</span> {{flora.binomial_name}}</li>
+            {% endif %}
+            {% assign alt = flora.alt_name %} 
+            {% if alt %} 
+            <li>
+                <span>Alternative names:</span>
+                {% if alt.size > 1 %} 
+                <ul>
+                    {% for alt in alt %}
+                       <li>{{alt}}</li>
+                    {% endfor %} 
+                </ul>
+                {% else %}
+                {{alt}} 
+                {% endif %} 
+            </li>
+            {% endif %}  
+        </ul>
+            <hr class="stealth">
+            <h2>History</h2>
+            <ul>
+            {% if flora.planted_date %} 
+            <li><span>Date planted:</span> {{flora.planted_date}}</li>
+            {% endif %} 
+            {% if flora.first_growth %} 
+            <li><span>First spring growth:</span> {{flora.first_growth}}</li>
+            {% endif %} 
+            {% if flora.flowers %} 
+            <li><span>First blooms:</span> {{flora.blooms}}</li>
+            {% endif %} 
+        </ul>
+        {% if flora.last_fertilized or flora.watering_schedule %} 
+        <hr class="stealth">
+            <h2>Care</h2>
+            
+            <ul>
+                {% if flora.last_fertilized %} 
+                <li><span>Last fertilized:</span> {{flora.last_fertilized}}</li>
+                {% endif %} 
+                {% if flora.watering_schedule %} 
+                <li><span>Watering frequency:</span> {{flora.watering_schedule}}</li>
+                {% endif %} 
+            </ul>
+            {% endif %} 
+        {% if flora.comments %} 
+        <hr class="stealth">
+            <h2>Comments</h2>
+
+            <div class="comments">
+                {% for comment in flora.comments %} 
+                <p>{{comment}}</p>
+                {% endfor %} 
+            </div>
+        {% endif %} 
+    </div>
+    </div>
+</article>
+{% endif %} 
