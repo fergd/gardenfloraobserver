@@ -79,8 +79,8 @@ ul{
     //Typography
     --max-paragraph: 35rem;
     //Font Displays
-    --f-normal: 100;
-    --f-medium: 400;
+    --f-light: 100;
+    --f-normal: 400;
     --f-heavy: 900;
     --f-emphasis: italic;
     //Images
@@ -205,189 +205,201 @@ hr{
 li{
     margin-bottom: var(--ms-1);
 }
-//=========HEADER=========//
-header.header-front-page{
-    padding: var(--ms-1) var(--ms0) var(--ms2) var(--ms0);
-    background: 
-        linear-gradient(
-            rgba(21,29,38,0.4),
-            rgba(21,29,38,0.4)
-        ), 
-        url(https://res.cloudinary.com/fergd/image/upload/v1663341132/Garden%20Flora%20Observer/martin-knize-JjT_7MwREm4-unsplash.jpg) no-repeat center;
-    background-size: cover;
-    box-shadow: 0px 0px 100px 50px var(--shadow);
-    border-bottom: var(--d-big-bottom-border);
-    div.garden-location{
-        width: 100%;
-        p{
-            width: 100%;
-            text-align: right;
-            font-weight: var(--f-medium);
+
+header{
+    &.header-front-page{    
+        padding: var(--ms0);
+        box-shadow: 0px 0px 60px 10px var(--shadow);
+        border-bottom: var(--d-big-bottom-border);
+
+        @media all and (min-width: 767px) {
+            padding: var(--ms-1) var(--ms0) var(--ms2) var(--ms0);
+            background: 
+            linear-gradient(
+                rgba(21,29,38,0.4),
+                rgba(21,29,38,0.4)
+            ), 
+            url(https://res.cloudinary.com/fergd/image/upload/v1663341132/Garden%20Flora%20Observer/martin-knize-JjT_7MwREm4-unsplash.jpg) no-repeat center;
+            background-size: cover;
         }
-    }
-    h1.site-title{
-        text-align: center;
-        text-transform: uppercase;
-        text-shadow: 0px 0px 20px var(--c-navy);
-        letter-spacing: 0;
-        span{
-            display: block;
-            font-size: var(--ms5);
-            color: var(--c-lush-green);
-            font-weight: var(--f-heavy);
-            opacity: 0.9;
-            // text-shadow: none;
-        }
-    }
-    @media all and (max-width: 767px) {
-        div.garden-location{
-            display: none;
-        }
+
+        
+
         h1.site-title{
             font-size: var(--ms1);
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0px 0px 20px var(--c-navy);
+            letter-spacing: 0;
             span{
                 font-size: var(--ms3);
+                display: block;
+                color: var(--c-lush-green);
+                font-weight: var(--f-heavy);
+                opacity: 0.9;
+            }
+
+            @media all and (min-width: 767px){
+                font-size: var(--ms2);
+                span{
+                    font-size: var(--ms5);
+                }
+            }
+            @media all and (min-width: 1800px){
+                margin: var(--ms4);
+            }
+        }
+
+        div.garden-location{
+            display: none;
+
+            @media all and (min-width: 767px) {
+                display: inline-block;
+                width: 100%;
+                p{
+                    width: 100%;
+                    text-align: right;
+                    font-weight: var(--f-medium);
+                }
+            }
+        }
+    }
+    &.no-link{
+        padding: var(--ms0);
+        box-shadow: 0px 0px 100px 50px var(--shadow);
+        border-bottom: var(--d-big-bottom-border);
+
+        @media all and (min-width: 767px){
+            padding: var(--ms1);
+        }
+
+        h1.site-title{
+            font-size: var(--ms1);
+            text-align: left;
+            text-transform: uppercase;
+            text-shadow: 0px 0px 20px var(--c-navy);
+            letter-spacing: 0;
+            font-weight: var(--f-heavy);
+            color: var(--c-lush-green);
+            &:hover{
+                color: var(--c-coral);
+            }
+            @media all and (min-width: 767px){
+                font-size: var(--ms2);
             }
         }
     }
 }
-header.no-link{
-    padding: var(--ms1);
-    box-shadow: 0px 0px 100px 50px var(--shadow);
-    border-bottom: var(--d-big-bottom-border);
 
-    h1.site-title{
-        text-align: left;
-        text-transform: uppercase;
-        text-shadow: 0px 0px 20px var(--c-navy);
-        letter-spacing: 0;
-        font-weight: var(--f-heavy);
-        color: var(--c-lush-green);
-        &:hover{
-            color: var(--c-coral);
-        }
-    }
-}
 main{
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    @media all and (min-width: 768px) {
-        section.cards{
-            display: flex;
-            max-width:100%;
-            flex-direction: row;
-            flex-wrap: wrap;
-            flex-grow: 1;
-            justify-content: space-around;
-        }
-    }
-}
-section.intro{
-    padding: var(--ms2);
-    text-align: center;
-    p{
-        font-size: var(--ms1);
-    }
-}
-section.hardiness-zone{
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    background: 
-        linear-gradient(
-            rgba(21,29,38,0.6),
-            rgba(21,29,38,0.6)
-        ), 
-        url(https://upload.wikimedia.org/wikipedia/commons/5/58/2012_USDA_Plant_Hardiness_Zone_Map_%28USA%29.jpg) no-repeat center;
-    background-size: cover;
-    background-attachment: fixed;
-    // height: 100vh;
-    width: 100%;
-    border-top: var(--d-big-bottom-border);
-    border-bottom: var(--d-big-bottom-border);
-    padding: var(--ms5);
-    a{
-        display: block;
-        padding: var(--ms0);
-        background: var(--c-fuchsia);
-        height: auto;
-        box-shadow: var(--d-box-shadow);
-        border-radius: 0 20px 20px 20px;
+    section.intro{
+        padding: var(--ms0) var(--ms1);
+        text-align: center;
+        @media all and (min-width: 767px) {
+            padding: var(--ms2);
+        }
+
+        p{
+            font-size: var(--ms1);
+        }
+    }
+    section.cards{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        justify-content: space-around;
+        align-items: center;
+        @media all and (min-width: 560px) {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .flora-item{
+            width: 250px;
+            padding: 5px;
+            &:hover{
+                a h1{
+                    color: var(--c-coral);
+                }
+            }
+            div.flora-item-wrapper{
+                border-radius: 200px 0 50px 0;
+                padding: var(--ms-1);
+                margin: var(--ms0) 0;
+                box-shadow: 15px 25px 30px 2px var(--shadow);
+                h1.flora-item-heading{
+                    margin-bottom: var(--ms-1);
+                    font-size: var(--ms0);
+                    letter-spacing: -0.09ch;
+                    color: var(--c-blue-green);
+                }
+                h1.flora-item-heading::first-line {
+                    font-size: var(--ms1);
+                }
+            }
+            figure.flora-image-container{
+                width: 100%;
+                position: relative;
+                margin-bottom: 13px;
+                border-radius: 0 100px;
+                figcaption{
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    padding: var(--ms-1) 0 var(--ms-1) var(--ms-1);
+                    font-style: italic;
+                    font-family: serif;
+                    font-size: var(--ms-1);
+                    border-radius: 30px 0 0 0;
+                    text-align: right;
+                    background-color: #f4f4f5;
+                    @media (prefers-color-scheme: dark) {
+                        background: var(--background);
+                        color: var(--color-splash);                
+                    }
+                }
+                img.flora-image{
+                    max-width: 100%;
+                    border-radius: 0 60px;
+                    filter: var(--image-opacity);
+                }
+            }
+        }
+    }
+    section.hardiness-zone{
+        display: none;
+        @media all and (min-width: 767px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            background: 
+                linear-gradient(
+                    rgba(21,29,38,0.6),
+                    rgba(21,29,38,0.6)
+                ), 
+                url(https://upload.wikimedia.org/wikipedia/commons/5/58/2012_USDA_Plant_Hardiness_Zone_Map_%28USA%29.jpg) no-repeat center;
+            background-size: cover;
+            background-attachment: fixed;
+            // height: 100vh;
+            width: 100%;
+            border-top: var(--d-big-bottom-border);
+            border-bottom: var(--d-big-bottom-border);
+            padding: var(--ms5);
+        }
+        @media all and (min-width: 1800px){
+            height: 75vh;
+        }
     }
 }
-.flora-item{
-    width: 250px;
-    padding: 5px;
-    &:hover{
-        a{
-            h1{
-                color: var(--c-coral);
-            }
-        }
-    }
-    @media all and (max-width: 767px) {
-        align-self: center;
-    }
-    @media all and (min-width: 768px) {
-        align-self: top;
-    }
-    div.flora-item-wrapper{
-        border-radius: 200px 0 50px 0;
-        padding: var(--ms-1);
-        @media (prefers-color-scheme: light) {
-            margin: var(--ms0) 0;
-            box-shadow: 15px 25px 30px 2px var(--shadow);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        @media (prefers-color-scheme: dark) {
-            margin: var(--ms0) 0;
-            box-shadow: 15px 25px 30px 2px var(--shadow);
-        }
-    }
-    h1.flora-item-heading{
-        margin-bottom: var(--ms1);
-        font-size: var(--ms0);
-        letter-spacing: -0.09ch;
-        color: var(--c-blue-green);
-    }
-    h1.flora-item-heading::first-line {
-        font-size: var(--ms1);
-    }
-    figure.flora-image-container{
-        width: 100%;
-        position: relative;
-        margin-bottom: 13px;
-        border-radius: 0 100px;
-        figcaption{
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            padding: var(--ms-1) 0 var(--ms-1) var(--ms-1);
-            font-style: italic;
-            font-family: serif;
-            font-size: var(--ms-1);
-            border-radius: 30px 0 0 0;
-            text-align: right;
-            background-color: #f4f4f5;
-            @media (prefers-color-scheme: dark) {
-                background: var(--background);
-                color: var(--color-splash);                
-            }
-        }
-        img.flora-image{
-            max-width: 100%;
-            border-radius: 0 60px;
-            @media (prefers-color-scheme: dark) {
-                filter: var(--image-opacity);
-            }
-        }
-    }
-}
+
 footer.site-footer{
     margin-top: var(--ms2);
     padding: var(--ms2) var(--ms0);
-
     h2.footer-heading{
         margin-bottom: var(--ms0);
         color: var(--color-splash);
@@ -399,20 +411,26 @@ footer.site-footer{
 }
 
 article.flora-item-post{
-    width: 100%;
+    max-width: 100%;
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
+    flex-direction: column;
     border-bottom: var(--d-big-bottom-border);
 
+    @media all and (min-width: 767px){
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+    }
+
     figure{
-        // min-height: 100vh;
-        max-width: 65%;
         overflow: hidden;
         flex-shrink: 3;
+        @media all and (min-width: 767px){
+            max-width: 65%;
+        }
         img{
             max-width: 100%; 
         } 
+
     }
    
     div.content{
@@ -421,18 +439,24 @@ article.flora-item-post{
         display: flex;
         flex-grow: 1;
         position: relative;
+        
         div.icon-wrapper{
             i{
-                font-size: var(--ms2);
+                font-size: var(--ms1);
                 border-radius: 100px;
                 padding: var(--ms-1);
                 position: absolute;
+                top: -0.9em;
+                right: var(--ms0);
+                @media all and (min-width: 767px){
+                font-size: var(--ms1);
                 right: -0.7em;
-                top: -0.5em;
+                top: -0.7em;
+                }
             }
             i[class$="deciduous"]{
                 color: var(--c-lush-green);
-                background: var(--text-default);
+                background: var(--c-navy);
             }
             i[class$="daffodil"]{
                 background: var(--c-coral);
@@ -463,29 +487,36 @@ article.flora-item-post{
             flex-grow: 1;
         }
         div.comments{
-            
             p{
                 padding: var(--ms0);
                 background: var(--c-blue-green);
                 border-radius: 0 var(--ms1);
+                // border: 2px solid var(--c-freesia);
                 color: var(--c-navy);
                 margin-bottom: var(--ms-1);
-                font-weight: var(--normal);
+                font-weight: var(--f-normal);
             }
         }
     }   
 }
 div.pagination{
-    padding: var(--ms2);
+    padding: var(--ms1) var(--ms0);
     border-bottom: var(--d-big-bottom-border);
     display: flex;
     justify-content: space-between;
 
+    @media all and (min-width: 767px){
+        padding: var(--ms2);
+    }
+
     a{
-        padding: var(--ms0);
+        padding: var(--ms-2);
         color: var(--c-coral);
         border: 2px solid var(--text-default);
         border-radius: 0.5em;
+        @media all and (min-width: 767px){
+            padding: var(--ms0);
+        }
         &:hover{
             background: rgba(169, 188, 176, 0.4);
             color: var(--c-blue-green);
